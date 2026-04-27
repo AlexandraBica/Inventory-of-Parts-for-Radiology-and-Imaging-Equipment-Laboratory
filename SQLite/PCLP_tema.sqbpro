@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/alexb/OneDrive/Desktop/PCLP_tema.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="1288"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="tblPiese" custom_title="0" dock_id="1" table="4,8:maintblPiese"/><dock_state state="000000ff00000000fd00000001000000020000000000000000fc0100000001fb000000160064006f0063006b00420072006f00770073006500310100000000ffffffff0000011300ffffff000000000000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1*">CREATE TABLE tblPiese
+(
+id_Piesa NUMBER(3) PRIMARY KEY UNIQUE,
+Cod_Piesa NUMBER(3),
+Denumire_Piesa TEXT(30),
+Pret_Piesa NUMBER(5),
+Cantitate NUMBER(10)
+);
+
+CREATE TABLE tblProducator
+(
+id_Producator NUMBER(2) PRIMARY KEY NOT NULL UNIQUE,
+Nume_Companie TEXT(30),
+id_Piesa NUMBER(3),
+Nr_telefon NUMBER(10),
+Mail TEXT(30),
+Adresa TEXT(25),
+Site TEXT(25)
+);
+
+CREATE TABLE tblClient
+(
+id_Client NUMBER(3) PRIMARY KEY UNIQUE,
+Nume_Client TEXT(15),
+Prenume_Client TEXT(15),
+CNP NUMBER(13),
+Nr_telefon NUMBER(10),
+Mail TEXT(30),
+Problema TEXT(30),
+Locatie TEXT(30)
+);
+
+CREATE TABLE tblOfertare
+(
+id_Oferta NUMBER(3) PRIMARY KEY UNIQUE,
+id_Client NUMBER(3),
+Cod_Piesa NUMBER(3),
+id_Producator NUMBER(3),
+Perioada DATE(10),
+Locatie TEXT(30),
+Pret_Lucrare NUMBER(6)
+);
+
+
+INSERT INTO tblPiese VALUES (1, 01, 'Monitor monocrom',1234, 1);
+INSERT INTO tblPiese VALUES (2, 02, 'Tub de raze X',4432, 1);
+INSERT INTO tblPiese VALUES (3, 03, 'Software de procesare 2D, 3D, 4D',9972, 1);
+INSERT INTO tblPiese VALUES (4, 04, 'Sondă ecografică convexă', 1570, 2);
+INSERT INTO tblPiese VALUES (5, 05, 'Colimator ajustabil', 2100, 2);
+INSERT INTO tblPiese VALUES (6, 06, 'Bobină RMN pentru genunchi', 3670, 6);
+INSERT INTO tblPiese VALUES (7, 07, 'Detector digital DR', 8900, 1);
+INSERT INTO tblPiese VALUES (8, 08, 'Panou plat digital DR', 8500, 1);
+INSERT INTO tblPiese VALUES (9, 09, 'Sondă ecografică liniară', 2100, 2);
+INSERT INTO tblPiese VALUES (10, 10, 'Bobină RMN pentru cap', 4300, 3);
+INSERT INTO tblPiese VALUES (11, 11, 'Injectomat pentru substanță de contrast', 3200, 1);
+INSERT INTO tblPiese VALUES (12, 12, 'Grilă anti-scattering', 950, 4);
+
+
+INSERT INTO tblProducator VALUES (1, 'ImagiST', 01, '07123456789', 'imagist@yahoo.com', 'Bucuresti', 'imagist.com');
+INSERT INTO tblProducator VALUES (2, 'MediTech', 02, '0722333444', 'contact@meditech.ro', 'Cluj-Napoca', 'meditech.ro');
+INSERT INTO tblProducator VALUES (3, 'Radix Systems', 03, '0733555666', 'info@radix.com', 'Iasi', 'radixsystems.com');
+INSERT INTO tblProducator VALUES (4, 'EchoScan', 04, '0744666777', 'support@echoscan.net', 'Timisoara', 'echoscan.net');
+INSERT INTO tblProducator VALUES (5, 'BioScanTech', 05, '0755111222', 'office@bioscantech.com', 'Oradea', 'bioscantech.com');
+INSERT INTO tblProducator VALUES (6, 'MedVision', 06, '0766222333', 'contact@medvision.ro', 'Constanta', 'medvision.ro');
+INSERT INTO tblProducator VALUES (7, 'UltraImage Systems', 07, '0777333444', 'info@ultraimage.com', 'Brasov', 'ultraimage.com');
+INSERT INTO tblProducator VALUES (8, 'DiagnoTech', 08, '0788123456', 'office@diagnotech.ro', 'Cluj', 'diagnotech.ro');
+INSERT INTO tblProducator VALUES (9, 'NovaMed Systems', 00, '0799123456', 'contact@novamed.com', 'Bucuresti', 'novamed.com');
+INSERT INTO tblProducator VALUES (10, 'ImageLine', 10, '0771123456', 'info@imageline.ro', 'Sibiu', 'imageline.ro');
+INSERT INTO tblProducator VALUES (11, 'MedForLife', 11, '071212456789', 'MedForLife@yahoo.com', 'Bucuresti', 'MedForLife.com');
+INSERT INTO tblProducator VALUES (12, 'ForTechnology', 12, '0755111333', 'ForTechnology@gmail.com', 'Oradea', 'ForTechnology.com');
+
+
+INSERT INTO tblClient VALUES (1, 'Popescu', 'Ioana', '1234567891011', '0723456785', 'popescu.ioana@gmail.com', 'eroare procesare', 'Bucuresti');
+INSERT INTO tblClient VALUES (2, 'Ionescu', 'Andrei', '2980523123456', '0722123456', 'ionescu.andrei@gmail.com', 'eroare soft', 'Cluj');
+INSERT INTO tblClient VALUES (3, 'Georgescu', 'Maria', '2960418123456', '0733444555', 'georgescu.maria@yahoo.com', 'problema monitor', 'Iasi');
+INSERT INTO tblClient VALUES (4, 'Dumitru', 'Cristian', '1990101123456', '0744567890', 'dumitru.cristian@mail.com', 'blocare sistem', 'Constanta');
+INSERT INTO tblClient VALUES (5, 'Lazar', 'Elena', '2940729123456', '0766789001', 'lazar.elena@outlook.com', 'defectiune hardware', 'Timisoara');
+INSERT INTO tblClient VALUES (6, 'Stan', 'Mihai', '1981231123456', '0788990112', 'stan.mihai@gmail.com', 'eroare ecran', 'Brasov');
+INSERT INTO tblClient VALUES (7, 'Tudor', 'Anca', '2970617123456', '0700111222', 'tudor.anca@yahoo.com', 'sunet lipsa', 'Oradea');
+INSERT INTO tblClient VALUES (8, 'Barbu', 'Ion', '1960528123456', '0723450000', 'barbu.ion@mail.com', 'scurtcircuit', 'Ploiesti');
+INSERT INTO tblClient VALUES (9, 'Matei', 'Silvia', '2950803123456', '0755666777', 'matei.silvia@gmail.com', 'necesita calibrare', 'Bacau');
+INSERT INTO tblClient VALUES (10, 'Dragan', 'Paul', '1991102123456', '0799888777', 'dragan.paul@med.ro', 'reinitializare', 'Galati');
+
+
+INSERT INTO tblOfertare VALUES (1, 2, 01, 1, '2024-11-01', 'Bucuresti', 1234);
+INSERT INTO tblOfertare VALUES (2, 3, 02, 1, '2024-12-15', 'Cluj', 4432);
+INSERT INTO tblOfertare VALUES (3, 5, 03, 2, '2025-01-10', 'Constanta', 9972);
+INSERT INTO tblOfertare VALUES (4, 7, 04, 5, '2025-03-05', 'Brasov', 8500);
+INSERT INTO tblOfertare VALUES (5, 8, 05, 8, '2025-04-22', 'Ploiesti', 2100);
+INSERT INTO tblOfertare VALUES (6, 9, 06, 10, '2025-05-20', 'Bacau', 3670);
+
+
+SELECT
+	tblPiese.Denumire_Piesa,
+	tblProducator.Nume_Companie
+FROM tblPiese JOIN tblProducator
+ON tblPiese.id_Piesa= tblProducator.id_Piesa;
+
+SELECT
+	tblClient.Nume_Client,
+	tblOfertare.Perioada
+FROM tblClient JOIN tblOfertare
+ON tblClient.Locatie= tblOfertare.Locatie;
+
+SELECT
+	tblPiese.Denumire_Piesa,
+	tblOfertare.id_Oferta
+FROM tblPiese JOIN tblOfertare
+ON tblPiese.Cod_Piesa= tblOfertare.Cod_Piesa;
+
+SELECT
+	tblClient.Nume_Client,
+	tblOfertare.Perioada
+FROM tblClient JOIN tblOfertare
+ON tblClient.id_Client= tblOfertare.id_Client;
+
+SELECT AVG(Pret_Lucrare) AS Pret_Mediu
+FROM tblOfertare;
+
+SELECT
+SUM(tblOfertare.Pret_Lucrare+(tblPiese.Pret_Piesa*tblPiese.Cantitate)) AS Pret_Total
+FROM tblOfertare, tblPiese;
+
+SELECT 
+  SUM(tblOfertare.Pret_Lucrare+(tblPiese.Pret_Piesa*tblPiese.Cantitate)) AS Pret_Total
+FROM tblOfertare
+JOIN tblPiese
+ON tblPiese.Cod_Piesa = tblOfertare.Cod_Piesa;
+
+DROP TABLE tblClient;
+DROP TABLE tblOfertare;
+DROP TABLE tblPiese;
+DROP TABLE tblProducator;
+</sql><current_tab id="0"/></tab_sql></sqlb_project>
